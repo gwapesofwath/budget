@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  display: flex;
+}
+
+input {
+  text-align: center;
 }
 
 .App-logo {
@@ -25,4 +30,20 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  text-align: center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  text-align: center;  
+}
+
+:-ms-input-placeholder {  
+  text-align: center; 
 }

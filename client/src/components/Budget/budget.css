@@ -5,3 +5,16 @@
 .bills-total {
   color: red;
 }
+
+.card {
+  border-width: 1px;
+  border-color: black;
+}
+
+.card-container {
+  display: flex;
+}
+.form-header {
+  border: 1px;
+  border-color: black;
+}
