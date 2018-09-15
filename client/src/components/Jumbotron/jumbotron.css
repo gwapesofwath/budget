@@ -1,0 +1,24 @@
+.jumbotron h1 {
+    font-size: 66px;
+    color: black;
+  }
+  
+  .jumbotron h2 {
+    font-size: 26px;
+    color: black;
+  }
+
+  .jumbotron {
+    background-image: url(/assets/img/background.jpg);
+    font-family: 'Montserrat', sans-serif;
+    opacity: .8;
+    background-repeat: no-repeat;
+    width: 100%;
+    align-content: center;
+    /* font-family: 'Montserrat', sans-serif;
+    font-family: 'Monoton', cursive; */
+  }
+
+  
+ 
+  
