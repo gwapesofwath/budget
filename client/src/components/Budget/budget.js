@@ -1,80 +1,64 @@
 import React from "react";
-import Field from "../Field";
+// import Field from "../Field";
 import "./budget.css";
+import {Link} from "react-router-dom";
 
 class Budget extends React.Component {
   state = {
-    walletCounter: [],
     paycheck: 0,
     otherIncome: 0,
     saveFirst: 0,
-    billCounter: [],
+    currentBalance: 0,
     wallet: 0,
-    expenses: 0,
+    housing: 0,
+    carPayment: 0,
+    carInsurance: 0,
+    gas: 0,
+    food: 0,
+    subscriptions: 0,
+    creditCards: 0,
+    otherBills: 0,
+    billsTotal: 0,
     leftover: 0
   }
 
-  calculateBudget = () => {
-    // calculate wallet
-    // ------------------------------------------------
-    const incomeArr = document.getElementsByClassName("wallet");
-    let savings = document.getElementsByClassName("pay-yourself");
-    let savingsNum = parseInt(savings[0].value, 10);
-    let incomeTotal = 0;
+  handleInputChange = event => {
+    let value = parseInt(event.target.value, 10) || 0;
+    const name = event.target.name;
 
-    for (let i = 0; i < incomeArr.length; i++) {
-      let ele = parseInt(incomeArr[i].value, 10);
-      console.log(ele);
-      if (isNaN(ele)) {
-        ele = 0;
-      }
-      console.log("converted" + ele)
-      incomeTotal += ele;
-    }
-    incomeTotal -= savingsNum;
-    console.log("INCOME TOTAL " + incomeTotal);
-    // ------------------------------------------------
-    // calculate bills
-    // ------------------------------------------------
-    const expenseArr = document.getElementsByClassName("bills");
-    let expenseTotal = 0;
+    // UPDATE STATE
+    this.setState({[name]: value}, function(){
+      let saveFirst = this.state.saveFirst;
+      this.calculateBudget(saveFirst);
+    });
+  };
 
-    for (let i = 0; i < expenseArr.length; i++) {
-      let ele = parseInt(expenseArr[i].value, 10);
-      if (isNaN(ele)) {
-        ele = 0;
-      }
-      expenseTotal += ele;
-    }
-    console.log("EXPENSE TOTAL " + expenseTotal);
-    // ------------------------------------------------
-    // calculate net income after bills and update state
-    // ------------------------------------------------
-    let scratchIncome = incomeTotal - expenseTotal;
+  calculateBudget() {
+    // CALCULATE TOTAL WALLET
+    let wallet = 
+    this.state.paycheck +
+    this.state.otherIncome +
+    this.state.currentBalance;
+    // CALCULATE TOTAL BILLS
+    let billsTotal = 
+    this.state.saveFirst +
+    this.state.housing +
+    this.state.carPayment +
+    this.state.carInsurance +
+    this.state.gas +
+    this.state.food +
+    this.state.subscriptions +
+    this.state.creditCards +
+    this.state.otherBills;
+    // CALCULATE NET INCOME AFTER BILLS
+    let leftover = wallet - billsTotal;
 
     this.setState({
-      wallet: incomeTotal,
-      leftover: scratchIncome,
-      expenses: expenseTotal,
-      saveFirst: savingsNum
+      wallet: wallet,
+      billsTotal: billsTotal,
+      leftover: leftover
     });
-    this.props.calcSavings(savingsNum);
   }
-  // ------------------------------------------------
-  // manage adding fields to wallet/bills
-  // ------------------------------------------------
-  addIncome = () => {
-    let wCounter = this.state.walletCounter;
-    wCounter.push(1);
-    this.setState({walletCounter: wCounter})
-  }
-
-  addExpense = () => {
-    let bCounter = this.state.billCounter;
-    bCounter.push(1);
-    this.setState({billCounter: bCounter});
-  }
-  // ------------------------------------------------
 
   divStyle = {
     width: "18rem"
@@ -84,7 +68,7 @@ class Budget extends React.Component {
     return (
       <div className="container">
 
-        <header><h5>This is your monthly budget page.  Add in your income and expenses below.</h5></header>
+        {/* <header><h5>This is your monthly budget page.  Add in your income and expenses below.</h5></header> */}
         <div className="card-container">
           {/* wallet */}
           <div className="card" style={this.divStyle}>
@@ -96,38 +80,36 @@ class Budget extends React.Component {
                 <div className="input-group-prepend">
                   <span className="input-group-text">Paycheck</span>
                 </div>
-                <input type="number"  className="form-control wallet" placeholder="Amount" />
+                <input type="number"  className="form-control" name="paycheck" onChange={this.handleInputChange} placeholder="Amount" />
               </div>
 
               <div className="input-group">
                 <div className="input-group-prepend">
                   <span className="input-group-text">Other Income</span>
                 </div>
-                <input type="number"  className="form-control wallet" placeholder="Amount" />
+                <input type="number"  className="form-control" name="otherIncome" onChange={this.handleInputChange} placeholder="Amount" />
               </div>
 
               <div className="input-group">
                 <div className="input-group-prepend">
                   <span className="input-group-text">Save First</span>
                 </div>
-                <input type="number"  className="form-control pay-yourself" placeholder="Amount" />
+                <input type="number"  className="form-control" name="saveFirst" onChange={this.handleInputChange} placeholder="Amount" />
               </div>
 
               <div className="input-group">
                 <div className="input-group-prepend">
                   <span className="input-group-text">Current Balance</span>
                 </div>
-                <input type="number"  className="form-control wallet" placeholder="Amount" />
+                <input type="number"  className="form-control" name="currentBalance" onChange={this.handleInputChange} placeholder="Amount" />
               </div>
               <hr/>
 
-              {this.state.walletCounter.map(blank => (<Field name="wallet" />))}
-              <button className="btn btn-secondary" onClick={this.addIncome}>addField</button>
               <h5 className="wallet-total">Wallet: {this.state.wallet}</h5>
               <hr/>
-
-              <button className="btn btn-primary" onClick={this.calculateBudget}>Submit</button>
               <div id="net"><h5>Net Income: {this.state.leftover}</h5></div>
+              <hr/>
+              <Link to ="/Savings"><button className="btn btn-primary">Proceed</button></Link>
             </div>
           </div>
 
@@ -139,60 +121,66 @@ class Budget extends React.Component {
 
               <div className="input-group">
                 <div className="input-group-prepend">
-                  <span className="input-group-text">Mortgage/Rent</span>
+                  <span className="input-group-text">Housing</span>
                 </div>
-                <input type="number"  className="form-control bills" placeholder="Amount" />
+                <input type="number"  className="form-control" name="housing" onChange={this.handleInputChange} placeholder="Amount" />
               </div>
 
               <div className="input-group">
                 <div className="input-group-prepend">
                   <span className="input-group-text">Car Payment</span>
                 </div>
-                <input type="number"  className="form-control bills" placeholder="Amount" />
+                <input type="number"  className="form-control" name="carPayment" onChange={this.handleInputChange} placeholder="Amount" />
               </div>
 
               <div className="input-group">
                 <div className="input-group-prepend">
                   <span className="input-group-text">Car Insurance</span>
                 </div>
-                <input type="number"  className="form-control bills" placeholder="Amount" />
+                <input type="number"  className="form-control" name="carInsurance" onChange={this.handleInputChange} placeholder="Amount" />
               </div>
 
               <div className="input-group">
                 <div className="input-group-prepend">
                   <span className="input-group-text">Gas</span>
                 </div>
-                <input type="number"  className="form-control bills" placeholder="Amount" />
+                <input type="number"  className="form-control" name="gas" onChange={this.handleInputChange} placeholder="Amount" />
               </div>
 
               <div className="input-group">
                 <div className="input-group-prepend">
                   <span className="input-group-text">Food</span>
                 </div>
-                <input type="number"  className="form-control bills" placeholder="Amount" />
+                <input type="number"  className="form-control" name="food" onChange={this.handleInputChange} placeholder="Amount" />
               </div>
 
               <div className="input-group">
                 <div className="input-group-prepend">
                   <span className="input-group-text">Subscriptions</span>
                 </div>
-                <input type="number"  className="form-control bills" placeholder="Amount" />
+                <input type="number"  className="form-control" name="subscriptions" onChange={this.handleInputChange} placeholder="Amount" />
               </div>
 
               <div className="input-group">
                 <div className="input-group-prepend">
                   <span className="input-group-text">Credit Cards</span>
                 </div>
-                <input type="number"  className="form-control bills" placeholder="Amount" />
+                <input type="number"  className="form-control" name="creditCards" onChange={this.handleInputChange} placeholder="Amount" />
               </div>
+
+              <div className="input-group">
+                <div className="input-group-prepend">
+                  <span className="input-group-text">Other Bills</span>
+                </div>
+                <input type="number"  className="form-control" name="otherBills" onChange={this.handleInputChange} placeholder="Amount" />
+              </div>
+
               <hr/>
 
-              {this.state.billCounter.map(blank => (<Field name="bills"/>))}
-              <button className="btn btn-secondary" onClick={this.addExpense}>addField</button>
               </div>
-              <h5 className="bills-total">Bills Total: {this.state.expenses}</h5>
+              <h5 className="bills-total">Bills Total: {this.state.billsTotal}</h5>
             </div>
-          </div>
+        </div>
 
       </div>
     )

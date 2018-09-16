@@ -18,7 +18,6 @@ class Savings extends React.Component {
     this.setState({
       [name]: value
     });
-
   };
 
   divStyle = {

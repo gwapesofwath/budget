@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
-import { BrowserRouter as Router } from 'react-router-dom';
 import "./navbar.css";
 
 
@@ -22,25 +21,20 @@ const Nav = () => (
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link className="nav-link " to="/">Budget</Link>
+            <Link className="nav-link " to="/Budget">Budget</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/saved">Bills</Link>
+            <Link className="nav-link" to="/Savings">Savings Simulator</Link>
           </li>
         </ul>
         <li>
-                <p class="navbar-btn">
-                    <a href="#" class="btn btn-default">Get Started</a>
+                <p className="navbar-btn">
+                    <a href="/Budget" className="btn btn-default">Get Started</a>
                 </p>
             </li>
       </div>
     </nav>
-
-
-
   );
 
-  
-  
   export default Nav;
   
