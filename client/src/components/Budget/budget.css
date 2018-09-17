@@ -9,6 +9,7 @@
 .card {
   border-width: 1px;
   border-color: black;
+  width: 18rem;
 }
 
 .card-container {
