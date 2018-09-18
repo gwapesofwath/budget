@@ -4,10 +4,11 @@ import "./savings.css";
 class Savings extends React.Component {
   state = {
     whatIfSavings: 0,
+    monthlySavings: 0,
     savingsGoal: 0
   }
 
-  updateSavings() {
+  componentDidMount() {
     this.setState({monthlySavings: this.props.monthlySavings});
   }
 
@@ -20,11 +21,6 @@ class Savings extends React.Component {
     });
   };
 
-  divStyle = {
-    width: "18rem"
-  };
-
-
   render() {
     return (
       <div className="container">
@@ -33,7 +29,7 @@ class Savings extends React.Component {
           <div className="col-md-3">
             <div className="card">
               <div className="card-body">
-                <div>This is your monthly savings: {this.props.monthlySavings}</div>
+                <div>This is your monthly savings: {this.state.monthlySavings}</div>
                 <hr/>
 
                 <div>What if you increased your savings by 
@@ -45,7 +41,7 @@ class Savings extends React.Component {
                 <input type="number" name="savingsGoal" onChange={this.handleInputChange} placeholder="Amount"/>
                 <hr/>
                 
-                <p>It will take you about {this.state.savingsGoal/(this.props.monthlySavings + this.state.whatIfSavings)} months to achieve this goal.</p>
+                <p>It will take you about {this.state.savingsGoal/(this.state.monthlySavings + this.state.whatIfSavings)} months to achieve this goal.</p>
               </div>
             </div>
           </div>

@@ -1,5 +1,4 @@
 import React from "react";
-// import Field from "../Field";
 import "./budget.css";
 import {Link} from "react-router-dom";
 
@@ -60,18 +59,19 @@ class Budget extends React.Component {
     });
   }
 
-  divStyle = {
-    width: "18rem"
-  };
+  componentWillUnmount() {
+    let saveFirst = this.state.saveFirst;
+    this.props.calcSavings(saveFirst);
+  }
 
   render() {
     return (
       <div className="container">
 
-        {/* <header><h5>This is your monthly budget page.  Add in your income and expenses below.</h5></header> */}
         <div className="card-container">
-          {/* wallet */}
-          <div className="card" style={this.divStyle}>
+          <div className="row">
+            {/* wallet */}
+            <div className="card">
             <div className="card-body">
               <h3>Monthly Income</h3>
               <hr/>
@@ -112,7 +112,6 @@ class Budget extends React.Component {
               <Link to ="/Savings"><button className="btn btn-primary">Proceed</button></Link>
             </div>
           </div>
-
           {/*bills*/}
           <div className="card" style={this.divStyle}>
             <div className="card-body">
@@ -180,6 +179,9 @@ class Budget extends React.Component {
               </div>
               <h5 className="bills-total">Bills Total: {this.state.billsTotal}</h5>
             </div>
+          </div>
+
+        
         </div>
 
       </div>
