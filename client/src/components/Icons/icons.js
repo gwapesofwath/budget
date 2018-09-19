@@ -23,7 +23,7 @@ class Icons extends React.Component{
         </div>
         <div class="col-xs-6 col-md-4">
         <p> Savings Straegies </p>
-        <img src="/assets/img/moneybag.jpg" alt="golff" />
+        <img src="/assets/img/cash.jpg" alt="golff" />
         </div>
       </div>
     );

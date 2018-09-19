@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 // const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
-const User = require("./models/User");
+const {User} = require("./models/User");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -55,12 +55,13 @@ app.post("/api/auth/register", function(req, res){
     username: req.body.username,
     password: req.body.password
   });
-
+  console.log(newUser);
   newUser.save(err => {
     if(err){
+      console.log(err);
       return res.json({ success: false, message: "Username taken" });
     }
-      return res.json({ success: true, message: "Successfully created a new user" });
+    res.json({ success: true, message: "Successfully created a new user" });
   })
 })
 
@@ -73,10 +74,13 @@ app.post("/api/auth/login", (req, res) => {
   if(!req.body.username || !req.body.password){
     return res.json({success: false, message: "Please provide a username and password"});
   }
+  console.log(req.body.username);
   User.findOne({
     username: req.body.username
   }, (err, user) => {
+    console.log(user);
     if(!user){
+      console.log(err);
       return res.status(401).send({success: false, message: "Incorrect username or password"});
     }
     else {

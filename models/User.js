@@ -8,8 +8,8 @@ const UserSchema = new Schema({
 });
 
 const BudgetSchema = new Schema({
-    totalIncome: { type: Number, required: true },
-    totalExpenses: { type: Number, required: true },
+    totalIncome: { type: Number, required: false },
+    totalExpenses: { type: Number, required: false },
 })
 
 UserSchema.pre('save', function(next){
@@ -34,5 +34,4 @@ UserSchema.methods.comparePassword = function(pass, cb){
 const User = mongoose.model("User", UserSchema);
 const Budget = mongoose.model("Budget", BudgetSchema);
 
-module.exports = User;
-module.exports = Budget;
+module.exports = {User, Budget};
