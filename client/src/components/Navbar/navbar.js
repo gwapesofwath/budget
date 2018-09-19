@@ -26,10 +26,13 @@ const Nav = () => (
           <li className="nav-item">
             <Link className="nav-link" to="/Savings">Savings Simulator</Link>
           </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/Login">Login</Link>
+          </li>
         </ul>
         <li>
                 <p className="navbar-btn">
-                    <a href="/Budget" className="btn btn-default">Get Started</a>
+                    <a href="/Register" className="btn btn-default">Get Started</a>
                 </p>
             </li>
       </div>

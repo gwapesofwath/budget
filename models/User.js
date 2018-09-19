@@ -4,8 +4,13 @@ const bcrypt = require("bcrypt");
 
 const UserSchema = new Schema({
     username: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
+    password: { type: String, required: true }
 });
+
+const BudgetSchema = new Schema({
+    totalIncome: { type: Number, required: true },
+    totalExpenses: { type: Number, required: true },
+})
 
 UserSchema.pre('save', function(next){
     if(this.isModified('password') || this.isNew){
@@ -19,13 +24,15 @@ UserSchema.pre('save', function(next){
     }
 });
 
-UserSchema.methods.comparePassword(function(pass, cb){
+UserSchema.methods.comparePassword = function(pass, cb){
     bcrypt.compare(pass, this.password, (err, isMatch) => {
         if(err) {return cb(err)}
         cb(null, isMatch);
     });
-});
+};
 
 const User = mongoose.model("User", UserSchema);
+const Budget = mongoose.model("Budget", BudgetSchema);
 
 module.exports = User;
+module.exports = Budget;
