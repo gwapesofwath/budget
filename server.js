@@ -44,9 +44,10 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 // Add routes, both API and view
-app.use(routes);
+// app.use(routes);
 
 app.post("/api/auth/register", function(req, res){
+  console.log("SEND IT!!!!")
   if(!req.body.username || !req.body.password){
     return res.json({success: false, message: "Please provide a username and password"});
   }

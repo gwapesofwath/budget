@@ -36,11 +36,11 @@ class Budget extends React.Component {
     // CALCULATE TOTAL WALLET
     let wallet = 
     this.state.paycheck +
-    this.state.otherIncome +
+    this.state.otherIncome -
+    this.state.saveFirst +
     this.state.currentBalance;
     // CALCULATE TOTAL BILLS
     let billsTotal = 
-    this.state.saveFirst +
     this.state.housing +
     this.state.carPayment +
     this.state.carInsurance +
@@ -70,6 +70,9 @@ class Budget extends React.Component {
 
         <div className="card-container">
           <div className="row">
+            <div className="col-3"></div>
+
+            <div className="col-3">
             {/* wallet */}
             <div className="card">
             <div className="card-body">
@@ -112,8 +115,11 @@ class Budget extends React.Component {
               <Link to ="/Savings"><button className="btn btn-primary">Proceed</button></Link>
             </div>
           </div>
-          {/*bills*/}
-          <div className="card" style={this.divStyle}>
+            </div>
+
+            <div className="col-3">
+            {/*bills*/}
+            <div className="card">
             <div className="card-body">
               <h3>Monthly Expenses</h3>
               <hr/>
@@ -179,6 +185,9 @@ class Budget extends React.Component {
               </div>
               <h5 className="bills-total">Bills Total: {this.state.billsTotal}</h5>
             </div>
+            </div>
+
+            <div className="col-3"></div>
           </div>
 
         

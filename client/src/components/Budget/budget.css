@@ -9,12 +9,8 @@
 .card {
   border-width: 1px;
   border-color: black;
-  width: 18rem;
 }
 
-.card-container {
-  display: flex;
-}
 .form-header {
   border: 1px;
   border-color: black;

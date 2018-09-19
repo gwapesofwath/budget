@@ -5,6 +5,7 @@ import Budget from "./components/Budget";
 import Nav from "./components/Navbar";
 import Jumbotron from "./components/Jumbotron";
 import Savings from "./components/Savings";
+import Tips from "./components/Tips";
 
 class App extends Component {
   state = {
@@ -24,7 +25,8 @@ class App extends Component {
           <Jumbotron />
           <div className="container">
             <Route exact path="/Budget" component={() => <Budget calcSavings={this.calculateSavings} />} />
-            <Route exact path="/Savings" component={() => <Savings monthlySavings={this.state.savings} />} />
+            <Route exact path="/Savings" component={() => <Savings monthlySavings={this.state.savings} /> }  />
+            <Route exact path="/Savings" component={() => <Tips /> }  />
           </div>
         </div>
       </Router>

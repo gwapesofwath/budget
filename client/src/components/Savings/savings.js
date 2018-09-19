@@ -26,7 +26,8 @@ class Savings extends React.Component {
       <div className="container">
         <header><h5>This is the Savings Simulator</h5></header>
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-5"></div>
+          <div className="col">
             <div className="card">
               <div className="card-body">
                 <div>This is your monthly savings: {this.state.monthlySavings}</div>
@@ -45,6 +46,7 @@ class Savings extends React.Component {
               </div>
             </div>
           </div>
+          <div className="col-5"></div>
         </div>
       </div>
     )
