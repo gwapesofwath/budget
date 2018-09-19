@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const app = express();
 const PORT = process.env.PORT || 3001;
 const {User} = require("./models/User");
+const {Budget} = require("./models/User");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -33,7 +34,6 @@ passport.use(new JwtStrategy(
     });
   }
 ))
-
 
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -98,7 +98,38 @@ app.post("/api/auth/login", (req, res) => {
   })
 })
 
+app.post("/api/budgetInfo", function(req, res) {
+  console.log(req.body);
+  let newBudget = new Budget({
+    wallet: req.body.wallet,
+    paycheck: req.body.paycheck,
+    otherIncome: req.body.otherIncome,
+    saveFirst: req.body.saveFirst,
+    currentBalance: req.body.currentBalance,
+    billsTotal: req.body.billsTotal,
+    housing: req.body.housing,
+    carPayment: req.body.carPayment,
+    carInsurance: req.body.carInsurance,
+    gas: req.body.gas,
+    food: req.body.food,
+    subscriptions: req.body.subscriptions,
+    creditCards: req.body.creditCards,
+    otherBills: req.body.otherBills,
+    leftover: req.body.leftover,
+  });
+  console.log(newBudget);
+  newBudget.save(err=>{
+    if(err){
+      console.log(err);
+      return res.json({ success: false, message: "BUDGET NOT POSTED" });
+    }
+    res.json({ success: true, message: "BUDGET POSTED" });
+  })
+});
 
+app.get("/api/budgetInfo", function(req,res){
+  console.log(res.body);
+})
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budgetUser");

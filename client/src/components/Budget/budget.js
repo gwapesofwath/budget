@@ -1,6 +1,7 @@
 import React from "react";
 import "./budget.css";
 import {Link} from "react-router-dom";
+import axios from "axios";
 
 class Budget extends React.Component {
   state = {
@@ -59,9 +60,17 @@ class Budget extends React.Component {
     });
   }
 
+  componentDidMount() {
+    axios.get("/api/budgetInfo", function(req,res) {
+      console.log(res.body);
+    })
+  }
+
   componentWillUnmount() {
     let saveFirst = this.state.saveFirst;
     this.props.calcSavings(saveFirst);
+    // POST GOES HERE
+    axios.post('/api/budgetInfo', this.state)
   }
 
   render() {

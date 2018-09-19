@@ -27,13 +27,11 @@ class App extends Component {
           <Nav />
           <Jumbotron />
           <Icons />
-          <div className="container">
             <Route exact path="/Budget" component={() => <Budget calcSavings={this.calculateSavings} />} />
             <Route exact path="/Savings" component={() => <Savings monthlySavings={this.state.savings} />} />
             <Route exact path="/Savings" component={() => <Tips /> }  />
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />
-          </div>
         </div>
       </Router>
     );

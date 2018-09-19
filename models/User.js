@@ -8,8 +8,21 @@ const UserSchema = new Schema({
 });
 
 const BudgetSchema = new Schema({
-    totalIncome: { type: Number, required: false },
-    totalExpenses: { type: Number, required: false },
+    wallet: { type: Number, required: false },
+    paycheck: { type: Number, required: false },
+    otherIncome: { type: Number, required: false },
+    saveFirst: { type: Number, required: false },
+    currentBalance: { type: Number, required: false },
+    billsTotal: { type: Number, required: false },
+    housing: { type: Number, required: false },
+    carPayment: { type: Number, required: false },
+    carInsurance: { type: Number, required: false },
+    gas: { type: Number, required: false },
+    food: { type: Number, required: false },
+    subscriptions: { type: Number, required: false },
+    creditCards: { type: Number, required: false },
+    otherBills: { type: Number, required: false },
+    leftover: { type: Number, required: false },
 })
 
 UserSchema.pre('save', function(next){
