@@ -33,7 +33,10 @@ const BudgetSchema = new Schema({
 
 UserSchema.pre('save', function(next){
     if(this.isModified('password') || this.isNew){
-        bcrypt.hash(this.password, 10, (err, hash) => {
+        console.log("hashing");
+        bcrypt.hash(this.password, bcrypt.genSaltSync(10), () => {}, (err, hash) => {
+            console.log("hashed");
+            console.log(err);
             if(err){ return next(err); }
             this.password = hash;
             return next();
