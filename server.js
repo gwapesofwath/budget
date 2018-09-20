@@ -47,17 +47,10 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 // app.use(routes);
 
-<<<<<<< HEAD
-app.post("/api/auth/register", function(req, res){
-  console.log("Sending user to register")
-  if(!req.body.username || !req.body.password){
-    return res.json({success: false, message: "Please provide a username and password"});
-=======
 app.post("/api/auth/register", function (req, res) {
   console.log("SEND IT!!!!")
   if (!req.body.username || !req.body.password) {
     return res.json({ success: false, message: "Please provide a username and password" });
->>>>>>> 9ce5a6c6eec6b122999c6d6ec6a23b9ea1b68970
   }
 
   var newUser = new User({

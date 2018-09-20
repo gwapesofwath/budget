@@ -12,10 +12,6 @@ const UserSchema = new Schema({
         }
     
 });
-<<<<<<< HEAD
-=======
-
->>>>>>> 9ce5a6c6eec6b122999c6d6ec6a23b9ea1b68970
 
 const BudgetSchema = new Schema({
     wallet: { type: Number, required: false },
