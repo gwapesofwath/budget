@@ -56,6 +56,7 @@ app.post("/api/auth/register", function(req, res){
     username: req.body.username,
     password: req.body.password
   });
+  
   console.log(newUser);
   newUser.save(err => {
     if(err){

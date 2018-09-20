@@ -4,8 +4,15 @@ const bcrypt = require("bcrypt");
 
 const UserSchema = new Schema({
     username: { type: String, required: true, unique: true },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    budget: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Budget"
+        }
+    ]
 });
+console.log(budget);
 
 const BudgetSchema = new Schema({
     wallet: { type: Number, required: false },
