@@ -12,7 +12,6 @@ const UserSchema = new Schema({
         }
     ]
 });
-console.log(budget);
 
 const BudgetSchema = new Schema({
     wallet: { type: Number, required: false },

@@ -47,7 +47,7 @@ if (process.env.NODE_ENV === "production") {
 // app.use(routes);
 
 app.post("/api/auth/register", function(req, res){
-  console.log("SEND IT!!!!")
+  console.log("Sending user to register")
   if(!req.body.username || !req.body.password){
     return res.json({success: false, message: "Please provide a username and password"});
   }
