@@ -77,7 +77,7 @@ class Tips extends React.Component {
     return(
       <div className="container">
         <div className="row">
-          <div className="col-8 offset-2">
+          <div className="col-8 blue offset-2">
             <button onClick={this.shuffleTips}>Get a savings tip</button>
             <div><h5>{this.state.currentTip}</h5></div>
           </div>

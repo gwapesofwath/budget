@@ -5,6 +5,8 @@
    .container-fluid {
        background-color: green;
        text-align: right;
+       height: 70px;
+       padding-top: 15px;
    }
 
    .nav-item {
@@ -12,8 +14,9 @@
    }
 
    .navbar-brand {
-       font-size: 20px;
+       font-size: 30px;
        color: white;
+       font-family: 'Permanent Marker', cursive;
    }
 
    .btn1 {
@@ -25,9 +28,15 @@
 
    ul {
        color: white;
+       font-family: 'Permanent Marker', cursive;
    }
 
    .nav-link {
     color: white;
     font-size: 15px;
    }
+
+   img {
+    height: 10px;
+    width: auto;
+}
