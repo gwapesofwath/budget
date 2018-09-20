@@ -31,7 +31,7 @@ class App extends Component {
             <Route exact path="/Savings" component={() => <Savings monthlySavings={this.state.savings} />} />
             <Route exact path="/Savings" component={() => <Tips /> }  />
             <Route path='/login' component={Login} />
-            <Route path='/register' component={Register} />
+            <Route path='/Register' component={Register} />
         </div>
       </Router>
     );
