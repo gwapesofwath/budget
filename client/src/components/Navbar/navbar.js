@@ -7,9 +7,11 @@ const Nav = () => (
 
 
   <div className="container-fluid">
+  
     <Link className="navbar-brand" to="/">
       Bank Shot
     </Link>
+    
     <div className="row justify-content-md-left">
       <ul className="nav-item">
         <Link className="nav-link" to="/Budget">Budget</Link>
@@ -17,12 +19,10 @@ const Nav = () => (
       <ul className="nav-item">
         <Link className="nav-link" to="/Savings">Savings Simulator</Link>
       </ul>
-      <ul className="nav-item">
-        <Link className="nav-link" to="/Login">Login</Link>
-      </ul>
+
       <ul>
         <p className="navbar-btn">
-          <a href="/Register" className="btn1 btn-primary btn-lg float-right">Get Started</a>
+          <a href="/Register" className="btn1 btn-primary btn-lg float-right"> Sign Up</a>
         </p>
       </ul>
     </div>

@@ -1,24 +1,87 @@
 .jumbotron h1 {
     font-size: 66px;
-    color: black;
+    color: white;
+    font-family: 'Permanent Marker', cursive;
   }
   
   .jumbotron h2 {
     font-size: 26px;
     color: black;
+    font-family: 'Permanent Marker', cursive;
   }
 
   .jumbotron {
     background-image: url(/assets/img/background.jpg);
     font-family: 'Montserrat', sans-serif;
-    opacity: .8;
+    opacity: .80;
     background-repeat: no-repeat;
-    width: stretch;
+    width: strecth;
     align-content: center;
     /* font-family: 'Montserrat', sans-serif;
     font-family: 'Monoton', cursive; */
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   }
 
+  .btn {
+    align-content: right;
+    /* margin-left: 500px; */
+    margin-top: 40px;
+    margin-left: 45%;
+    max-width: 100px;
+    color: black;
+    background-color: orange;
+    font-family: 'Permanent Marker', cursive;
+   }
+
+   body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #eee;
+  }
+  
+  .form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+  .form-signin .form-signin-heading,
+  .form-signin .checkbox {
+    margin-bottom: 10px;
+  }
+  .form-signin .checkbox {
+    font-weight: normal;
+  }
+  .form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+  }
+  .form-signin .form-control:focus {
+    z-index: 2;
+  }
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .form-signin p {
+    margin-top: 10px;
+  }
+
+  .nav-link {
+    color: black;
+  }
   
  
   

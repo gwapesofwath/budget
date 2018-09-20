@@ -5,13 +5,17 @@ const bcrypt = require("bcrypt-nodejs");
 const UserSchema = new Schema({
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    budget: [
+    budget: 
         {
             type: Schema.Types.ObjectId,
             ref: "Budget"
         }
-    ]
+    
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9ce5a6c6eec6b122999c6d6ec6a23b9ea1b68970
 
 const BudgetSchema = new Schema({
     wallet: { type: Number, required: false },
