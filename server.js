@@ -10,7 +10,7 @@ const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 dotenv.config();
 var db = require("./models/User");
-
+const path = require('path')
 const passport = require("passport");
 const { Strategy: JwtStrategy, ExtractJwt } = require("passport-jwt");
 
@@ -167,6 +167,10 @@ app.get("/populated", function (req, res) {
       // If an error occurs, send it back to the client
       res.json(err);
     });
+});
+
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname,"./client/build/index.html"))
 });
 
 // Connect to the Mongo DB
